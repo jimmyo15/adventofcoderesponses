@@ -20,7 +20,8 @@ class ExpenseReportCalculator:
 
     def initiate_report(self, file_location, target_value, num_count=2):
         input_file = open(file_location)
-        vals = self.find_values_summing_to_target(input_file, target_value, num_count)  # include self.num_count here
+        vals = self.find_values_summing_to_target(input_file, target_value, num_count)
+        input_file.close()
         return vals
 
     def find_values_summing_to_target(self, iterable, target_value, num_count):

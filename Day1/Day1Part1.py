@@ -21,8 +21,10 @@ class ExpenseReportCalculator:
             diff = self.target_value - int(line)
             if diff in self.reviewed_amounts:
                 self.reviewed_amounts = {}
+                input_file.close()
                 return diff, int(line)
             self.reviewed_amounts[int(line)] = True
+        input_file.close()
         return None
 
     @staticmethod
