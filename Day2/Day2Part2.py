@@ -34,11 +34,27 @@ class PasswordAnalyzer():
                 correct_password_counter += 1
         return correct_password_counter
 
+    @staticmethod
+    def password_position_analyzer(iterable):
+        correct_password_counter = 0
+        for item in iterable:
+            parsed_item = PasswordAnalyzer.record_parser(item)
+            if parsed_item["min"] > len(parsed_item["password"]):
+                continue
+            elif parsed_item["max"] > len(parsed_item["password"]):
+                if parsed_item["password"][(parsed_item["min"] - 1)] == parsed_item["target_letter"]:
+                    correct_password_counter += 1
+            elif (parsed_item["password"][parsed_item["min"] - 1] == parsed_item["target_letter"] \
+                  or parsed_item["password"][parsed_item["max"] - 1] == parsed_item["target_letter"]) and \
+                    parsed_item["password"][parsed_item["min"] - 1] != parsed_item["password"][parsed_item["max"] - 1]:
+                correct_password_counter += 1
+        return correct_password_counter
+
 
 if __name__ == "__main__":
     file = 'Day2Input.txt'
     input_file = open(file)
     pa = PasswordAnalyzer()
-    count = pa.password_count_analyzer(input_file)
+    count = pa.password_position_analyzer(input_file)
     input_file.close()
     print(count)
