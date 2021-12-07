@@ -1,8 +1,3 @@
-#Put the set of inputs in an array
-#Maintain a tuple that has the board and count of inputs before a win
-#Build each board using a dictionary and build a 5x5 matrix to mark number selection (use -1?)
-
-
 class Board:
     def __init__(self):
         self.board_values = dict()
