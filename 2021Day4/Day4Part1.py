@@ -27,9 +27,9 @@ class BingoGame:
         self.number_order = [int(num) for num in numbers]
 
     def build_board(self, input_file):
-        column_index = 0
         board = Board()
         for row_index in range(5):
+            column_index = 0
             line = next(input_file)
             row_array = line.rstrip().split()
             for number in row_array:
